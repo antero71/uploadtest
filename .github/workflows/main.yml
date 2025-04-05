@@ -1,0 +1,20 @@
+name: Upload Artifact Test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create test file
+        run: echo "Hello GitHub Actions" > hello.txt
+
+      - name: Upload test file
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-artifact
+          path: hello.txt
